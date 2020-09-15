@@ -1,0 +1,18 @@
+- hosts: all
+  tasks:
+        - copy:
+                dest: "/tmp"
+                src: "/root/Desktop/code/docker/docker_images"
+
+        - package:
+                name: 
+                        - docker-ce
+                        - python2-pip
+                state: present
+
+        - pip: 
+                name: "docker-py"
+                state: present
+        - service:
+                name: "docker"
+                state: started 

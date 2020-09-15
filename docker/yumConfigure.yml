@@ -1,0 +1,10 @@
+- hosts: all
+  tasks:
+        - copy:
+                dest: "/"
+                src: "/root/Desktop/code/docker/epel-release-latest-7.noarch.rpm"
+
+        - command:
+                     cmd: rpm -ivh /epel-release-latest-7.noarch.rpm
+                     creates: /etc/yum.repos.d/epel.repo
+       

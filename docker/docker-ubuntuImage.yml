@@ -1,0 +1,23 @@
+- hosts: all
+  tasks:
+        - copy:
+                dest: "/root/Desktop/docker_images"
+                src: "/root/Desktop/code/docker/docker_images/"
+
+        - package:
+                name: "docker-ce"
+                state: present
+
+        - service:
+                name: "docker"
+                state: started
+
+        - docker_image:
+                name: "ubuntu:14.04"
+                load_path: "/root/Desktop/docker_images/ubuntu-14.04.tar"
+                state: build
+ 
+        - docker_container:
+                name: ubuntu
+                image: ubuntu:14.04
+                state: started

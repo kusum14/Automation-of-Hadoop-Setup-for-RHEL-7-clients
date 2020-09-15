@@ -1,0 +1,23 @@
+- hosts: all
+  tasks: 
+        - copy:
+                dest: "/root/Desktop/docker_images"
+                src: "/root/Desktop/code/docker/docker_images/"
+
+        - package:
+                name: "docker-ce"
+                state: present
+
+        - service:
+                name: "docker"
+                state: started
+
+        - docker_image:
+                name: "centos"
+                load_path: "/root/Desktop/docker_images/centos-latest.tar"
+                state: build
+ 
+        - docker_container:
+                name: centos
+                image: centos:latest
+                state: started

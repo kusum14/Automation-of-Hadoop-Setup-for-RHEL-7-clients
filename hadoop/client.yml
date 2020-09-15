@@ -1,0 +1,19 @@
+- hosts: all
+  vars_prompt: 
+         - name: ipofmaster
+           prompt: "Enter the ip of master"
+           private: no
+
+         - name: ipofjobtracker
+           prompt: "Enter the ip of jobtracker"
+           private: no
+
+  tasks:
+        - template:
+               src: /root/Desktop/code/hadoop/Templates/core-site.xml
+               dest: /etc/hadoop/core-site.xml
+        - template:
+               src: /root/Desktop/code/hadoop/Templates/mapredsite.xml
+               dest: /etc/hadoop/mapred-site.xml
+        
+        

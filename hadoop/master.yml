@@ -1,0 +1,18 @@
+- hosts: all
+  vars_prompt: 
+         - name: ipofmaster
+           prompt: "Enter the ip of master"
+           private: no
+
+  tasks:
+        
+        - copy:
+               dest: "/etc/hadoop/hdfs-site.xml"
+               src: "/root/Desktop/code/hadoop/Templates/masterhdfs.xml" 
+        - template:
+               src: /root/Desktop/code/hadoop/Templates/core-site.xml
+               dest: /etc/hadoop/core-site.xml 
+        - file:
+               path: /nn
+               state: directory
+
